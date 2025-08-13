@@ -191,7 +191,7 @@ class WikipediaPlotCreator:
         plt.yscale("log")
         plt.title(title)
         plt.legend()
-        plt.savefig("top_articles.png")
+        plt.savefig(self._plot_file_path)
 
     def create_changes_in_page_popularity_plot(self):
         df = self.__extract_data()
@@ -213,7 +213,7 @@ if __name__ == "__main__":
                         default=None,
                         help="Path to save plot")
     args = parser.parse_args()
-    plot_creator = WikipediaPlotCreator(start_date="2222",
+    plot_creator = WikipediaPlotCreator(start_date=args.start,
                                         end_date=args.end,
                                         plot_file_path=args.plot_file_path)
     plot_creator.create_changes_in_page_popularity_plot()
